@@ -15,7 +15,6 @@ import java.util.stream.IntStream;
 public class ExampleSinkConnector extends SinkConnector {
 
   private static final Logger log = LoggerFactory.getLogger(ExampleSinkConnector.class);
-  private static final AtomicInteger cnt = new AtomicInteger(0);
   private ExampleConnectorConfig config = new ExampleConnectorConfig(Map.of());
 
   @Override
