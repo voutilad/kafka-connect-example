@@ -19,6 +19,7 @@ repositories {
 
 dependencies {
     implementation("org.apache.kafka:connect-api:3.4.0")
+    implementation("org.slf4j:slf4j-api:1.7.30")
 
     // Use JUnit Jupiter for testing.
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")

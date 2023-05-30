@@ -3,16 +3,17 @@ package com.redpanda.connect;
 import org.apache.kafka.common.config.ConfigDef;
 import org.apache.kafka.connect.connector.Task;
 import org.apache.kafka.connect.source.SourceConnector;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ExampleSourceConnector extends SourceConnector {
 
-  private static final Logger log = Logger.getLogger(ExampleSourceConnector.class.getName());
+  private static final Logger log = LoggerFactory.getLogger(ExampleSourceConnector.class);
   private ExampleConnectorConfig config = new ExampleConnectorConfig(Map.of());
 
   @Override
