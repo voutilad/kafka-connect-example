@@ -38,7 +38,16 @@ tasks.named<Test>("test") {
 
 tasks.named<Jar>("jar") {
     manifest {
-        attributes(mapOf("Build-Jdk" to System.getProperty("java.version")))
+        attributes(
+                mapOf(
+                        "Build-Jdk" to System.getProperty("java.version"),
+                        "Specification-Title" to "Fake Connector for Kafka Connect",
+                        "Specification-Version" to "1.0",
+                        "Specification-Vendor" to "Redpanda Solutions Team",
+                        "Implementation-Title" to "Fake Connector for Kafka Connect",
+                        "Implementation-Version" to version
+                )
+        )
         archiveBaseName.set(rootProject.name)
     }
 }
