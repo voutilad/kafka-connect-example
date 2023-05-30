@@ -42,6 +42,7 @@ public class ExampleSourceTask extends SourceTask {
 
   @Override
   public List<SourceRecord> poll() throws InterruptedException {
+    log.info("poll() called");
     final String fakeKey = Thread.currentThread().getName();
 
     return List.of(
