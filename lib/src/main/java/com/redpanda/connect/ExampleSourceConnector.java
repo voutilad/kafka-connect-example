@@ -30,7 +30,7 @@ public class ExampleSourceConnector extends SourceConnector {
   @Override
   public List<Map<String, String>> taskConfigs(int maxTasks) {
     // This would normally generate maxTasks-distinct configs. We fake it.
-    return IntStream.range(1, maxTasks).mapToObj(i -> config.originalsStrings()).collect(Collectors.toList());
+    return IntStream.range(0, maxTasks).mapToObj(i -> config.originalsStrings()).collect(Collectors.toList());
   }
 
   @Override
