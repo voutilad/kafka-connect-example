@@ -1,0 +1,71 @@
+version: '2'
+
+services:
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:v23.1.11
+    command:
+      - redpanda
+      - start
+      - --kafka-addr PLAINTEXT://0.0.0.0:9092,external://0.0.0.0:19092
+      - --advertise-kafka-addr PLAINTEXT://redpanda:9092,external://localhost:19092
+      - --smp 1
+      - --memory 1G
+      - --default-log-level=info
+    ports:
+      - "9092:9092"
+      - "19092:19092"
+
+  redpanda-console:
+    image: docker.redpanda.com/redpandadata/console:latest
+    entrypoint: /bin/sh
+    command: -c 'echo "$$CONSOLE_CONFIG_FILE" > /tmp/config.yml; /app/console'
+    environment:
+      CONFIG_FILEPATH: /tmp/config.yml
+      CONSOLE_CONFIG_FILE: |
+        kafka:
+          brokers: ["redpanda:9092"]
+          clientId: console
+          schemaRegistry:
+            enabled: true
+            urls: ["http://redpanda:8081"]
+        redpanda:
+          adminApi:
+            enabled: true
+            urls: ["http://redpanda:9644"]
+        connect:
+          enabled: true
+          clusters:
+            - name: kafka-connect
+              url: http://connect:8083
+    ports:
+      - "8080:8080"
+    links:
+      - redpanda
+      - connect
+    depends_on:
+      - redpanda
+      - connect
+
+  postgres:
+    image: quay.io/debezium/example-postgres:2.3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+
+  connect:
+    image: quay.io/debezium/connect:2.3
+    environment:
+      BOOTSTRAP_SERVERS: redpanda:9092
+      GROUP_ID: 1
+      CONFIG_STORAGE_TOPIC: my_connect_configs
+      OFFSET_STORAGE_TOPIC: my_connect_offsets
+      STATUS_STORAGE_TOPIC: my_connect_statuses
+    ports:
+      - "8083:8083"
+    links:
+      - redpanda
+      - postgres
+    depends_on:
+      - redpanda
