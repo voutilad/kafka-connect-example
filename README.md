@@ -22,5 +22,11 @@ At this point you should be able to see the example connectors in the UI:
 
 ![Redpanda Console - Create Connector](./img/redpanda-connect-create-connector.png)
 
+## Sample PostgreSQL Database
+A sample PostgreSQL database is provided thanks to the Debezium project if you want to play with it as a source or sink.
+
+It's accessible via the Connect service at `postgres:5432` with a database called `postgres` and a username/password
+of `postgres:postgres`. (Think you can remember that? 😜)
+
 ## ⚠️ Heads Up!
 The dummy source connector will rapidly fill a target topic with garbage data 😬
