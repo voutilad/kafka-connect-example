@@ -5,8 +5,6 @@ import org.apache.kafka.common.config.ConfigDef;
 
 import java.util.Map;
 
-import static com.redpanda.connect.example.ExampleConnectorConfig.config;
-
 public class HttpSinkConnectorConfig extends AbstractConfig {
   public final String url;
   public static final String KEY_URL = "http.url";

@@ -25,8 +25,11 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("org.json:json:20230618")
 
-    // Use JUnit Jupiter for testing.
+    // Testing deps.
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.3")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.10.0")
+    testImplementation("org.slf4j:slf4j-jdk14:1.7.36")
+
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
