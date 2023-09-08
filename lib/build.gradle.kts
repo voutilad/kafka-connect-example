@@ -18,11 +18,11 @@ repositories {
 }
 
 dependencies {
-    implementation("org.apache.kafka:connect-api:3.4.0")
-    implementation("org.slf4j:slf4j-api:1.7.30")
+    implementation("org.apache.kafka:connect-api:3.5.1")
+    implementation("org.slf4j:slf4j-api:1.7.36")
 
     // Use JUnit Jupiter for testing.
-    testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.3")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -42,13 +42,27 @@ tasks.named<Jar>("jar") {
         attributes(
                 mapOf(
                         "Build-Jdk" to System.getProperty("java.version"),
-                        "Specification-Title" to "Fake Connector for Kafka Connect",
+                        "Specification-Title" to "Example Connectors for Kafka Connect",
                         "Specification-Version" to "1.0",
                         "Specification-Vendor" to "Redpanda Solutions Team",
-                        "Implementation-Title" to "Fake Connector for Kafka Connect",
+                        "Implementation-Title" to "Example Connectors for Kafka Connect",
                         "Implementation-Version" to version
                 )
         )
         archiveBaseName.set(rootProject.name)
     }
+}
+
+tasks.register<Copy>("getFlatDependencies") {
+        val runtimeClasspath =
+            project.configurations.matching { it.name == "desktopRuntimeClasspath" }
+	println("runtimeClasspath = $runtimeClasspath")
+        runtimeClasspath.all {
+            for (dep in map { file: File -> file.absoluteFile }) {
+                project.copy {
+                    from(dep)
+                    into("${rootProject.projectDir}/build/libs")
+                }
+            }
+        }
 }
