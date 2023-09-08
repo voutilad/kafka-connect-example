@@ -40,6 +40,7 @@ public class HttpSinkTask extends SinkTask {
       final String token = authenticate(config.tokenUrl, config.clientId, config.clientSecret, config.username, config.password);
       if (token.isBlank())
         throw new RuntimeException("failed to authenticate :(");
+      log.info("successfully authenticated with clientId: {}", config.clientId);
       credentials = "Bearer " + token;
     }
   }
@@ -87,6 +88,7 @@ public class HttpSinkTask extends SinkTask {
   protected String authenticate(String tokenUrl, String clientId, String clientSecret, String username, String password) {
     final RequestBody body = new FormBody.Builder()
         .addEncoded("grant_type", "password")
+        .addEncoded("scope", "openid")
         .addEncoded("client_id", clientId)
         .addEncoded("client_secret", clientSecret)
         .addEncoded("username", username)

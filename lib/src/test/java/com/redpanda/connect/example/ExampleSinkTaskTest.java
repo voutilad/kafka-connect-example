@@ -1,4 +1,4 @@
-package com.redpanda.connect;
+package com.redpanda.connect.example;
 
 import com.redpanda.connect.example.ExampleSinkTask;
 import org.junit.jupiter.api.Assertions;

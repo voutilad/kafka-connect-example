@@ -1,4 +1,4 @@
-package com.redpanda.connect;
+package com.redpanda.connect.example;
 
 import com.redpanda.connect.example.ExampleSourceTask;
 import org.apache.kafka.connect.source.SourceRecord;
