@@ -1,5 +1,6 @@
-package com.redpanda.connect;
+package com.redpanda.connect.example;
 
+import com.redpanda.connect.Common;
 import org.apache.kafka.connect.sink.SinkRecord;
 import org.apache.kafka.connect.sink.SinkTask;
 import org.slf4j.Logger;

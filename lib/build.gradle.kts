@@ -21,6 +21,10 @@ dependencies {
     implementation("org.apache.kafka:connect-api:3.5.1")
     implementation("org.slf4j:slf4j-api:1.7.36")
 
+    // Dependencies for HTTP Sink example.
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation("org.json:json:20230618")
+
     // Use JUnit Jupiter for testing.
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.3")
 }
