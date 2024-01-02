@@ -46,14 +46,6 @@ services:
       - redpanda
       - connect
 
-  postgres:
-    image: quay.io/debezium/example-postgres:2.3
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports:
-      - "5432:5432"
-
   connect:
     image: docker.redpanda.com/redpandadata/connectors:v1.0.13
     environment:
@@ -76,6 +68,5 @@ services:
       - "8083:8083"
     links:
       - redpanda
-      - postgres
     depends_on:
       - redpanda
