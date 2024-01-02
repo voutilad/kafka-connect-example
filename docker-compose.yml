@@ -57,13 +57,21 @@ services:
   connect:
     image: docker.redpanda.com/redpandadata/connectors:v1.0.13
     environment:
-      BOOTSTRAP_SERVERS: redpanda:9092
-      GROUP_ID: 1
-      CONFIG_STORAGE_TOPIC: my_connect_configs
-      OFFSET_STORAGE_TOPIC: my_connect_offsets
-      STATUS_STORAGE_TOPIC: my_connect_statuses
+      CONNECT_HEAP_OPTS: -Xms1G -Xmx1G
+      CONNECT_BOOTSTRAP_SERVERS: redpanda:9092
+      CONNECT_PLUGIN_PATH: /opt/kafka/connect-plugins
+      CONNECT_ADDITIONAL_CONFIGURATION: |
+        key.converter=org.apache.kafka.connect.converters.ByteArrayConverter
+        value.converter=org.apache.kafka.connect.converters.ByteArrayConverter
+        group.id=connectors-group
+        offset.storage.topic=_connectors_offsets
+        config.storage.topic=_connectors_configs
+        status.storage.topic=_connectors_status
+        config.storage.replication.factor=-1
+        offset.storage.replication.factor=-1
+        status.storage.replication.factor=-1
     volumes:
-      - $PWD/lib/build/libs:/kafka/connect/example-connector
+      - $PWD/lib/build/libs:/opt/kafka/connect-plugins
     ports:
       - "8083:8083"
     links:
