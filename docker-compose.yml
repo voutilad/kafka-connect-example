@@ -2,7 +2,7 @@ version: '2'
 
 services:
   redpanda:
-    image: docker.redpanda.com/redpandadata/redpanda:v23.1.11
+    image: docker.redpanda.com/redpandadata/redpanda:v23.3.1
     command:
       - redpanda
       - start
@@ -16,7 +16,7 @@ services:
       - "19092:19092"
 
   redpanda-console:
-    image: docker.redpanda.com/redpandadata/console:latest
+    image: docker.redpanda.com/redpandadata/console:v2.3.8
     entrypoint: /bin/sh
     command: -c 'echo "$$CONSOLE_CONFIG_FILE" > /tmp/config.yml; /app/console'
     environment:
@@ -55,7 +55,7 @@ services:
       - "5432:5432"
 
   connect:
-    image: quay.io/debezium/connect:2.3
+    image: docker.redpanda.com/redpandadata/connectors:v1.0.13
     environment:
       BOOTSTRAP_SERVERS: redpanda:9092
       GROUP_ID: 1

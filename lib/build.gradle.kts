@@ -5,7 +5,7 @@
  * For more details take a look at the 'Building Java & JVM projects' chapter in the Gradle
  * User Manual available at https://docs.gradle.org/8.1.1/userguide/building_java_projects.html
  */
-version = "1.0-SNAPSHOT"
+version = "1.1-SNAPSHOT"
 
 plugins {
     // Apply the java-library plugin for API and implementation separation.
@@ -18,16 +18,16 @@ repositories {
 }
 
 dependencies {
-    implementation("org.apache.kafka:connect-api:3.5.1")
+    implementation("org.apache.kafka:connect-api:3.6.1")
     implementation("org.slf4j:slf4j-api:1.7.36")
 
     // Dependencies for HTTP Sink example.
-    implementation("com.squareup.okhttp3:okhttp:4.11.0")
-    implementation("org.json:json:20230618")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("org.json:json:20231013")
 
     // Testing deps.
-    testImplementation("org.junit.jupiter:junit-jupiter:5.9.3")
-    testImplementation("com.squareup.okhttp3:mockwebserver:4.10.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.1")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.12.0")
     testImplementation("org.slf4j:slf4j-jdk14:1.7.36")
 
 }
