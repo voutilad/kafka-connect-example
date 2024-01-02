@@ -1,6 +1,6 @@
-package com.redpanda.connect.http;
+package com.redpanda.connectors.http;
 
-import com.redpanda.connect.Common;
+import com.redpanda.connectors.Common;
 import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;

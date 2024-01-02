@@ -1,6 +1,6 @@
-package com.redpanda.connect.http;
+package com.redpanda.connectors.http;
 
-import com.redpanda.connect.Common;
+import com.redpanda.connectors.Common;
 import org.apache.kafka.common.config.ConfigDef;
 import org.apache.kafka.connect.connector.Task;
 import org.apache.kafka.connect.sink.SinkConnector;

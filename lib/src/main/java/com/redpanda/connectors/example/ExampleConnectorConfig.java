@@ -1,4 +1,4 @@
-package com.redpanda.connect.example;
+package com.redpanda.connectors.example;
 
 import org.apache.kafka.common.config.AbstractConfig;
 import org.apache.kafka.common.config.ConfigDef;

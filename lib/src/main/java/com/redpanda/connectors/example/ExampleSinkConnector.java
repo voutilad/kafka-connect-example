@@ -1,9 +1,9 @@
-package com.redpanda.connect.example;
+package com.redpanda.connectors.example;
 
-import com.redpanda.connect.Common;
+import com.redpanda.connectors.Common;
 import org.apache.kafka.common.config.ConfigDef;
 import org.apache.kafka.connect.connector.Task;
-import org.apache.kafka.connect.source.SourceConnector;
+import org.apache.kafka.connect.sink.SinkConnector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,9 +12,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class ExampleSourceConnector extends SourceConnector {
+public class ExampleSinkConnector extends SinkConnector {
 
-  private static final Logger log = LoggerFactory.getLogger(ExampleSourceConnector.class);
+  private static final Logger log = LoggerFactory.getLogger(ExampleSinkConnector.class);
   private ExampleConnectorConfig config = new ExampleConnectorConfig(Map.of());
 
   @Override
@@ -25,7 +25,7 @@ public class ExampleSourceConnector extends SourceConnector {
 
   @Override
   public Class<? extends Task> taskClass() {
-    return ExampleSourceTask.class;
+    return ExampleSinkTask.class;
   }
 
   @Override
@@ -36,7 +36,7 @@ public class ExampleSourceConnector extends SourceConnector {
 
   @Override
   public void stop() {
-    log.info("stop() called");
+    log.info("start() called");
   }
 
   @Override

@@ -1,4 +1,4 @@
-package com.redpanda.connect.http;
+package com.redpanda.connectors.http;
 
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;

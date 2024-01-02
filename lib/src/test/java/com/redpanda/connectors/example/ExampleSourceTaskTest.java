@@ -1,6 +1,5 @@
-package com.redpanda.connect.example;
+package com.redpanda.connectors.example;
 
-import com.redpanda.connect.example.ExampleSourceTask;
 import org.apache.kafka.connect.source.SourceRecord;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

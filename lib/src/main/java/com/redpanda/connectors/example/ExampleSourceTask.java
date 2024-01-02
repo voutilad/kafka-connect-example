@@ -1,6 +1,6 @@
-package com.redpanda.connect.example;
+package com.redpanda.connectors.example;
 
-import com.redpanda.connect.Common;
+import com.redpanda.connectors.Common;
 import org.apache.kafka.connect.data.Schema;
 import org.apache.kafka.connect.source.SourceRecord;
 import org.apache.kafka.connect.source.SourceTask;
